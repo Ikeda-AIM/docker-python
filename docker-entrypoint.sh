@@ -9,7 +9,7 @@ cp ~/rcmod.py /usr/local/lib/python3.6/dist-packages/seaborn/rcmod.py
 rm -rf ~/.cache/matplotlib/*
 
 #jupyterとtensorboard起動
-#.bashrcへ移管
-#nohup jupyter lab --ip=0.0.0.0 --NotebookApp.password='sha1:7c24c0aead07:7b292ff7488a7452c19bd9681945061c20b02d40' --allow-root >> jupyter.log 2>&1 &
-#nohup tensorboard --logdir=./ --bind_all >> tensorboard.log 2>&1 &
+#.bashrcへ移管→毎回起動してしまうので戻した
+nohup jupyter lab --ip=0.0.0.0 --NotebookApp.password='sha1:7c24c0aead07:7b292ff7488a7452c19bd9681945061c20b02d40' --allow-root >> jupyter.log 2>&1 &
+nohup tensorboard --logdir=./ --bind_all >> tensorboard.log 2>&1 &
 exec "$@"
