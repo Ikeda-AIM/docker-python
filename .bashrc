@@ -116,19 +116,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-cd
+alias myconts='docker ps --filter "name=ikeda" -a'
 
-#minioの設定
-export LANG=C.UTF-8
-export LANGUAGE=en_US:
-export MINIO_ACCESS_KEY="ikeda"
-export MINIO_SECRET_KEY="ISD5lZpcPgfh4cqxfFQby5j3S8sIlm6OAWM+Oma/"
-
-#nasマウント(使用不可)
-#cp ~/fstab /etc
-#mkdir -m 777 /mnt/nas3
-#sudo mount -a
-
-#jupyterとtensorboard起動
-nohup jupyter lab --ip=0.0.0.0 --NotebookApp.password='sha1:7c24c0aead07:7b292ff7488a7452c19bd9681945061c20b02d40' --allow-root >> jupyter.log 2>&1 &
-nohup tensorboard --logdir=./ --bind_all >> tensorboard.log 2>&1 &
+function drun-host () {
+    docker run -v ~/docker:/root -v ~/mnt:/mnt -it --name=$1 --net=host --shm-size 128gb ikeda/python /bin/bash
+}
+function drun-port () {
+    docker run -v ~/docker:/root -v ~/mnt:/mnt -it --name=$1 -p $2:8888 -p $3:6006 --shm-size 128gb ikeda/python /bin/bash
+}
