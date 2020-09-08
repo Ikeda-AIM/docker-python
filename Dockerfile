@@ -1,4 +1,4 @@
-FROM nvidia/cuda:10.2-cudnn8-devel-ubuntu18.04
+FROM nvidia/cuda:11.0-cudnn8-devel-ubuntu18.04
 
 LABEL maintainer="ikeda <ikeda@ai-ms.com>"
 
@@ -11,7 +11,7 @@ RUN apt update --fix-missing && \
 # install PyTorch
 RUN pip3 install -U pip && pip3 install setuptools && \
     pip3 install torch torchvision && \
-    pip3 install pretrainedmodels tensorboard efficientnet-pytorch minio pytorch-gradcam albumentations pycocotools scikit-learn opencv-python mlflow minio && \
+    pip3 install pretrainedmodels tensorboard efficientnet-pytorch minio pytorch-gradcam albumentations pycocotools scikit-learn opencv-python mlflow minio boto3 && \
     pip3 install -U numpy==1.17.0 && \
     pip3 install pandas statsmodels seaborn jupyterlab
 
