@@ -13,7 +13,7 @@ RUN pip3 install -U pip && pip3 install setuptools && \
     pip3 install torch torchvision && \
     pip3 install pretrainedmodels tensorboard efficientnet-pytorch minio pytorch-gradcam albumentations pycocotools scikit-learn opencv-python mlflow minio boto3 && \
     pip3 install -U numpy==1.17.0 && \
-    pip3 install pandas statsmodels seaborn jupyterlab
+    pip3 install pandas statsmodels seaborn jupyterlab xlrd
 
 # link python3.6 to python
 RUN ln -snf /usr/bin/python3.6 /usr/bin/python
