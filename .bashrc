@@ -119,8 +119,8 @@ fi
 alias myconts='docker ps --filter "name=ikeda" -a'
 
 function drun-host () {
-    docker run -v ~/docker:/root -v ~/mnt:/mnt -it -v /etc/group:/etc/group:ro -v /etc/passwd:/etc/passwd:ro -u $(id -u $USER):$(id -g $USER) --name=$1 --net=host --shm-size 128gb ikeda/python /bin/bash
+    docker run -v ~/docker:/root -v ~/mnt:/mnt -it -v /etc/group:/etc/group:ro -v /etc/passwd:/etc/passwd:ro -u $(id -u $USER):$(id -g $USER) --name=$1 --net=host --shm-size 128gb ikeda/python:$4 /bin/bash
 }
 function drun-port () {
-    docker run -v ~/docker:/root -v ~/mnt:/mnt -it -v /etc/group:/etc/group:ro -v /etc/passwd:/etc/passwd:ro -u $(id -u $USER):$(id -g $USER) --name=$1 -p $2:8888 -p $3:6006 --shm-size 128gb ikeda/python /bin/bash
+    docker run -v ~/docker:/root -v ~/mnt:/mnt -it -v /etc/group:/etc/group:ro -v /etc/passwd:/etc/passwd:ro -u $(id -u $USER):$(id -g $USER) --name=$1 -p $2:8888 -p $3:6006 --shm-size 128gb ikeda/python:$4 /bin/bash
 }
