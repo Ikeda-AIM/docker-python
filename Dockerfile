@@ -20,6 +20,11 @@ RUN pip3 install -U pip && pip3 install setuptools && \
 # link python3.6 to python
 RUN ln -snf /usr/bin/python3.6 /usr/bin/python
 
+#sudoの設定
+RUN sed -i -e 's/# %wheel\tALL=(ALL)\tNOPASSWD: ALL/%wheel\tALL=(ALL)\tNOPASSWD: ALL/' /etc/sudoers
+RUN sed -i -e 's/%wheel\tALL=(ALL)\tALL/# %wheel\tALL=(ALL)\tALL/' /etc/sudoers
+RUN visudo -c
+
 COPY docker-entrypoint.sh /tmp
 #ENTRYPOINT [ "/bin/bash" ]
 ENTRYPOINT ["/tmp/docker-entrypoint.sh"]
