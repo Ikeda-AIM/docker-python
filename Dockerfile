@@ -41,4 +41,3 @@ RUN ln -snf /usr/bin/python3.6 /usr/bin/python
 COPY docker-entrypoint.sh /tmp
 #ENTRYPOINT [ "/bin/bash" ]
 ENTRYPOINT ["/tmp/docker-entrypoint.sh"]
-.2
