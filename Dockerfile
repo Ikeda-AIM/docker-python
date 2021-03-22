@@ -4,6 +4,25 @@ LABEL maintainer="ikeda <ikeda@ai-ms.com>"
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
+# 各環境変数を設定
+ENV USER ikeda
+ENV HOME /home/${USER}/docker
+ENV SHELL /bin/bash
+
+# 一般ユーザーアカウントを追加
+RUN useradd -m ${USER}
+# 一般ユーザーにsudo権限を付与
+RUN gpasswd -a ${USER} sudo
+# 一般ユーザーのパスワード設定
+#RUN echo "${USER}:test_pass" | chpasswd
+# ログインシェルを指定
+#sed -i.bak -e "s/${HOME}:/${HOME}:${SHELL}" /etc/passwd
+
+# 以降のRUN/CMDを実行するユーザー
+USER ${USER}
+# 以降の作業ディレクトリを指定
+WORKDIR ${HOME}
+
 RUN apt update --fix-missing && \
     apt install -y --no-install-recommends \
         sudo wget curl dpkg bzip2 ca-certificates libglib2.0-0 \
@@ -13,7 +32,7 @@ RUN apt update --fix-missing && \
 # install PyTorch
 RUN pip3 install -U pip && pip3 install setuptools && \
     pip3 install torch torchvision && \
-    pip3 install pretrainedmodels tensorboard efficientnet-pytorch minio pytorch-gradcam albumentations pycocotools scikit-learn opencv-python mlflow minio boto3 && \
+    pip3 install pretrainedmodels tensorboard efficientnet-pytorch minio pytorch-gradcam albumentations pycocotools scikit-learn opencv-python mlflow xmltodict minio boto3 timm&& \
     pip3 install -U numpy==1.17.0 install pandas statsmodels seaborn jupyterlab xlrd ffmpeg-python
 
 # link python3.6 to python
