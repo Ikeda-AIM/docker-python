@@ -11,25 +11,6 @@ RUN apt update --fix-missing && \
         libxext6 libsm6 libxrender1 git mercurial subversion \
         python3-dev python3-pip flake8 ffmpeg iputils-ping net-tools
 
-# 各環境変数を設定
-ENV USER ikeda
-ENV HOME /home/${USER}/docker
-ENV SHELL /bin/bash
-
-# 一般ユーザーアカウントを追加
-RUN useradd -m ${USER}
-# 一般ユーザーにsudo権限を付与
-RUN gpasswd -a ${USER} sudo
-# 一般ユーザーのパスワード設定
-#RUN echo "${USER}:test_pass" | chpasswd
-# ログインシェルを指定
-#sed -i.bak -e "s/${HOME}:/${HOME}:${SHELL}" /etc/passwd
-
-# 以降のRUN/CMDを実行するユーザー
-USER ${USER}
-# 以降の作業ディレクトリを指定
-WORKDIR ${HOME}
-
 # install PyTorch
 RUN pip3 install -U pip && pip3 install setuptools && \
     pip3 install torch torchvision && \
