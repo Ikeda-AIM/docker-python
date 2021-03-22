@@ -2,9 +2,9 @@
 cd ~
 #日本語フォント設定
 mkdir -p /usr/share/fonts/truetype/dejavu
-cp ~/DejaVuSans.ttf /usr/share/fonts/truetype/dejavu
-cp ~/ipag.ttf /usr/local/lib/python3.6/dist-packages/matplotlib/mpl-data/fonts/ttf/
-echo 'font.family : IPAGothic' >> /usr/local/lib/python3.6/dist-packages/matplotlib/mpl-data/matplotlibrc
+sudo cp ~/DejaVuSans.ttf /usr/share/fonts/truetype/dejavu
+sudo cp ~/ipag.ttf /usr/local/lib/python3.6/dist-packages/matplotlib/mpl-data/fonts/ttf/
+sudo echo 'font.family : IPAGothic' >> /usr/local/lib/python3.6/dist-packages/matplotlib/mpl-data/matplotlibrc
 #cp ~/rcmod.py /usr/local/lib/python3.6/dist-packages/seaborn/rcmod.py
 rm -rf ~/.cache/matplotlib/*
 
