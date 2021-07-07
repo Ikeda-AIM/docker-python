@@ -16,12 +16,11 @@ RUN apt update --fix-missing && \
 # install PyTorch
 RUN pip3 install -U pip && pip3 install setuptools && \
     pip3 install torch torchvision cython && \
-    pip3 install pretrainedmodels tensorboard efficientnet-pytorch minio pytorch-gradcam albumentations pycocotools scikit-learn opencv-python mlflow xmltodict minio boto3 timm&& \
+    pip3 install pretrainedmodels tensorboard efficientnet-pytorch minio pytorch-gradcam albumentations pycocotools scikit-learn opencv-python mlflow xmltodict minio boto3 timm && \
     pip3 install numpy pandas pandarallel statsmodels seaborn jupyterlab xlrd ffmpeg-python
 
 # link python3.8 to python
 RUN ln -snf /usr/bin/python3.8 /usr/bin/python
-
 
 COPY docker-entrypoint.sh /tmp
 #ENTRYPOINT [ "/bin/bash" ]
