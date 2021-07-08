@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.4-cudnn8-devel-ubuntu20.04
+FROM nvidia/cuda:11.4.0-devel-ubuntu20.04
 
 LABEL maintainer="ikeda <ikeda@ai-ms.com>"
 
@@ -17,7 +17,7 @@ RUN apt update --fix-missing && \
 RUN pip3 install -U pip && pip3 install setuptools && \
     pip3 install torch torchvision cython && \
     pip3 install pretrainedmodels tensorboard efficientnet-pytorch minio pytorch-gradcam albumentations pycocotools scikit-learn opencv-python mlflow xmltodict minio boto3 timm && \
-    pip3 install numpy pandas pandarallel statsmodels seaborn jupyterlab xlrd ffmpeg-python
+    pip3 install numpy pandas pandarallel statsmodels seaborn jupyterlab xlrd ffmpeg-python moviepy
 
 # link python3.6 to python
 RUN ln -snf /usr/bin/python3.6 /usr/bin/python
